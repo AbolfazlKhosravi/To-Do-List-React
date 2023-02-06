@@ -1,12 +1,12 @@
 {
   "todos": [
     {
-      "title": "f",
+      "title": "react",
       "completed": false,
       "id": 1
     },
     {
-      "title": "d",
+      "title": "js",
       "completed": false,
       "id": 2
     }
