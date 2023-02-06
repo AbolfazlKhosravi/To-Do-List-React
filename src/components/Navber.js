@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import { multipleFilterAsynchTodos } from "../featuers/todos/todosReducer";
@@ -13,6 +13,9 @@ const Navbar = () => {
     { value: "completed", label: "completed" },
     { value: "inCompleted", label: "inCompleted" },
   ];
+  useEffect(()=>{
+    dispatch(multipleFilterAsynchTodos({selected:select.value,title:inputValue}))
+  },[data])
   const selectedOption = (selectedOption) => {
    setSelect(selectedOption);
    dispatch(multipleFilterAsynchTodos({selected:selectedOption.value,title:inputValue}))
