@@ -52,7 +52,7 @@ export const edditAsyncTodo=createAsyncThunk("Todos/edditAsyncTodo", async(paylo
    return rejectWithValue(error)
   }
 })
-export const multipleFilterAsynchTodos=createAsyncThunk("Todos/searchAsynchTodos", async(payload,{rejectWithValue})=>{
+export const multipleFilterAsynchTodos=createAsyncThunk("Todos/multipleFilterAsynchTodos", async(payload,{rejectWithValue})=>{
   try {
    const data= await axios.get("http://localhost:3001/todos");
    return {todos:data.data,title:payload.title,selected:payload.selected}
@@ -62,7 +62,7 @@ export const multipleFilterAsynchTodos=createAsyncThunk("Todos/searchAsynchTodos
 })
 
 const initialState = {
-  data:null,
+  data:[],
   error:null,
   loding:false,
 }
@@ -75,6 +75,7 @@ export const todosSlice = createSlice({
       return {...state,data:null,loding:true,error:null}
     })
     builder.addCase(fetchData.fulfilled,(state,action)=>{
+      console.log(1);
       return {...state,data:action.payload,loding:false,error:null}
     })
     builder.addCase(fetchData.rejected,(state,action)=>{

@@ -1,7 +1,7 @@
 {
   "todos": [
     {
-      "title": "react",
+      "title": "react1",
       "completed": false,
       "id": 1
     },
@@ -9,6 +9,11 @@
       "title": "js",
       "completed": false,
       "id": 2
+    },
+    {
+      "title": "d",
+      "completed": false,
+      "id": 3
     }
   ]
 }
