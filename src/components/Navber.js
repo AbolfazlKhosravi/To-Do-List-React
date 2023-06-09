@@ -12,7 +12,7 @@ const Navbar = () => {
   const options = [
     { value: "", label: "All" },
     { value: "completed", label: "completed" },
-    { value: "inCompleted", label: "inCompleted" },
+    { value: "unCompleted", label: "unCompleted" },
   ];
   useEffect(() => {
     dispatch(

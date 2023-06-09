@@ -105,7 +105,7 @@ export const todosSlice = createSlice({
          state.data=filtered
          return
       }
-      case "inCompleted":{
+      case "unCompleted":{
         const filtered = todosFiltered.filter(t=>!t.completed)
          state.data=filtered
          return
