@@ -11,8 +11,8 @@ const Navbar = ({inputValue , setInputValue, select, setSelect}) => {
     { value: "completed", label: "completed" },
     { value: "unCompleted", label: "unCompleted" },
   ];
-  const dataLength = data ? data.length : "";
-  const dependencies = [dataLength];
+  const dataLength = data ? data.length : 0;
+  const dependencies = [dataLength, select.value, inputValue];
   
   useEffect(() => {
     dispatch(multipleFilterAsynchTodos({ selected: select.value, title: inputValue }));

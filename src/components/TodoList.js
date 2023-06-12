@@ -20,7 +20,7 @@ const TodoList = ({ select, inputValue }) => {
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
-  
+
   useEffect(() => {
    if(data){
     const todosFiltered=data.filter((t)=>{
@@ -44,7 +44,7 @@ const TodoList = ({ select, inputValue }) => {
      }
     }
    }
-  }, [data]);
+  }, [data, select.value, inputValue]);
 
   if (loding) return <div className="text-white mt-4">loding...</div>;
   if (error) return <div className="text-white mt-4">{error}</div>;
