@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import { multipleFilterAsynchTodos } from "../featuers/todos/todosReducer";
 import React from "react";
-const Navbar = () => {
+const Navbar = ({inputValue , setInputValue, select, setSelect}) => {
   const { data, loding } = useSelector((state) => state.todos);
-  const [inputValue, setInputValue] = useState("");
-  const [select, setSelect] = useState("");
   const dispatch = useDispatch();
   const options = [
     { value: "", label: "All" },
