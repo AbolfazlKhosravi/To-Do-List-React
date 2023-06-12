@@ -11,7 +11,7 @@ const TodoForm = ({show,setShow}) => {
  },[])
   const updateHandler = (e) => {
     e.preventDefault();
-    if (value == "") {
+    if (value === "") {
       alert("writing to form");
       return;
     } 

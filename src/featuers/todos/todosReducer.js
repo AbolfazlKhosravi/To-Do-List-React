@@ -1,7 +1,6 @@
 
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { useState } from 'react';
 
 export const fetchData=createAsyncThunk("Todos/fetchData", async(_,{rejectWithValue})=>{
  try {
@@ -75,7 +74,6 @@ export const todosSlice = createSlice({
       return {...state,data:null,loding:true,error:null}
     })
     builder.addCase(fetchData.fulfilled,(state,action)=>{
-      console.log(1);
       return {...state,data:action.payload,loding:false,error:null}
     })
     builder.addCase(fetchData.rejected,(state,action)=>{
@@ -88,11 +86,11 @@ export const todosSlice = createSlice({
       state.data=state.data.filter((t)=>t.id!==action.payload.id)
    })
    builder.addCase(toggleAsyncTodo.fulfilled,(state,action)=>{
-    const todo=state.data.find((t)=>t.id==action.payload.id);
+    const todo=state.data.find((t)=>t.id===action.payload.id);
     todo.completed=action.payload.completed
    })
    builder.addCase(edditAsyncTodo.fulfilled,(state,action)=>{
-    const todo=state.data.find((t)=>t.id==action.payload.id);
+    const todo=state.data.find((t)=>t.id===action.payload.id);
     todo.title=action.payload.title
    })
    builder.addCase(multipleFilterAsynchTodos.fulfilled,(state,action)=>{

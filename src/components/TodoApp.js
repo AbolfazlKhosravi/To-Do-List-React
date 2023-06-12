@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Navbar from "./Navber";
 import TodoForm from "./TodoForms";
 import TodoList from "./TodoList";

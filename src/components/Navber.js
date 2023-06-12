@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import { multipleFilterAsynchTodos } from "../featuers/todos/todosReducer";
 import React from "react";
-import { useCallback } from "react";
 const Navbar = () => {
   const { data, loding } = useSelector((state) => state.todos);
   const [inputValue, setInputValue] = useState("");
@@ -14,11 +13,13 @@ const Navbar = () => {
     { value: "completed", label: "completed" },
     { value: "unCompleted", label: "unCompleted" },
   ];
+  const dataLength = data ? data.length : "";
+  const dependencies = [dataLength];
+  
   useEffect(() => {
-    dispatch(
-      multipleFilterAsynchTodos({ selected: select.value, title: inputValue })
-    );
-  }, [data&&data.length]);
+    dispatch(multipleFilterAsynchTodos({ selected: select.value, title: inputValue }));
+  }, dependencies);
+
   const selectedOption = (selectedOption) => {
     setSelect(selectedOption);
     dispatch(
@@ -40,7 +41,14 @@ const Navbar = () => {
       })
     );
   };
-  if (data && data.length == 0 && !inputValue && !select)
+  if (loding) {
+    return (
+      <h2 className="text-white mb-5 bg-gray-800 px-8 py-2 rounded-sm font-bold">
+        loding
+      </h2>
+    );
+  }
+  if (data && data.length === 0 && !inputValue && !select)
     return (
       <h2 className="text-white mb-5 bg-gray-800 px-8 py-2 rounded-sm font-bold">
         set today Todos
