@@ -12,11 +12,10 @@ const Navbar = ({inputValue , setInputValue, select, setSelect}) => {
     { value: "unCompleted", label: "unCompleted" },
   ];
   const dataLength = data ? data.length : 0;
-  const dependencies = [dispatch,dataLength, select.value, inputValue];
   
   useEffect(() => {
     dispatch(multipleFilterAsynchTodos({ selected: select.value, title: inputValue }));
-  }, dependencies);
+  }, [dispatch, inputValue, select.value, dataLength]);
 
   const selectedOption = (selectedOption) => {
     setSelect(selectedOption);
