@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const fetchData=createAsyncThunk("Todos/fetchData", async(_,{rejectWithValue})=>{
  try {
-  const data= await axios.get("http://localhost:3001/todos");
+  const data= await axios.get("https://khosravi-react-todolist.glitch.me/todos");
   return data.data
  } catch (error) {
   return rejectWithValue(error)
@@ -12,7 +12,7 @@ export const fetchData=createAsyncThunk("Todos/fetchData", async(_,{rejectWithVa
 })
 export const addAsyncTodo=createAsyncThunk("Todos/addAsyncTodo", async(payload,{rejectWithValue})=>{
   try {
-   const data= await axios.post("http://localhost:3001/todos",{
+   const data= await axios.post("https://khosravi-react-todolist.glitch.me/todos",{
     title:payload.title,
     completed:false
    });
@@ -23,7 +23,7 @@ export const addAsyncTodo=createAsyncThunk("Todos/addAsyncTodo", async(payload,{
  })
 export const removeAsyncTodo=createAsyncThunk("Todos/removeAsyncTodo", async(payload,{rejectWithValue})=>{
   try {
-    await axios.delete(`http://localhost:3001/todos/${payload.id}`)
+    await axios.delete(`https://khosravi-react-todolist.glitch.me/todos/${payload.id}`)
    return {id:payload.id}
   } catch (error) {
    return rejectWithValue(error)
@@ -31,7 +31,7 @@ export const removeAsyncTodo=createAsyncThunk("Todos/removeAsyncTodo", async(pay
 })
 export const toggleAsyncTodo=createAsyncThunk("Todos/toggleAsyncTodo", async(payload,{rejectWithValue})=>{
   try {
-   const data= await axios.put(`http://localhost:3001/todos/${payload.id}`,{
+   const data= await axios.put(`https://khosravi-react-todolist.glitch.me/todos/${payload.id}`,{
       title:payload.title,
       completed:payload.completed
     })
@@ -42,7 +42,7 @@ export const toggleAsyncTodo=createAsyncThunk("Todos/toggleAsyncTodo", async(pay
 })
 export const edditAsyncTodo=createAsyncThunk("Todos/edditAsyncTodo", async(payload,{rejectWithValue})=>{
   try {
-   const data= await axios.put(`http://localhost:3001/todos/${payload.id}`,{
+   const data= await axios.put(`https://khosravi-react-todolist.glitch.me/todos/${payload.id}`,{
       title:payload.title,
       completed:payload.completed
     })
@@ -53,7 +53,7 @@ export const edditAsyncTodo=createAsyncThunk("Todos/edditAsyncTodo", async(paylo
 })
 export const multipleFilterAsynchTodos=createAsyncThunk("Todos/multipleFilterAsynchTodos", async(payload,{rejectWithValue})=>{
   try {
-   const data= await axios.get("http://localhost:3001/todos");
+   const data= await axios.get("https://khosravi-react-todolist.glitch.me/todos");
    return {todos:data.data,title:payload.title,selected:payload.selected}
   } catch (error) {
    return rejectWithValue(error)
